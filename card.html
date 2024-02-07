@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #product-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .product-card {
+      width: 300px;
+      margin: 20px;
+      padding: 15px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .add-to-cart-btn {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #cart-icon {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+
+    #cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    #cart-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 400px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .close-btn {
+      background-color: #f44336;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Shopping Cart</h1>
+    <div id="cart-icon" onclick="openCartModal()">🛒</div>
+  </header>
+
+  <div id="product-container">
+    <div class="product-card" id="product1">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_IzcZRGY8xLSgq8HQrjbLgvBX9-gkAlpZQ&usqp=CAU" alt="Product 1">
+      <h3>Product 1</h3>
+      <p>$19.99</p>
+      <button class="add-to-cart-btn" onclick="addToCart('Product 1', 19.99)">Add to Cart</button>
+    </div>
+
+    <div class="product-card" id="product2">
+      <img src="product2.jpg" alt="Product 2">
+      <h3>Product 2</h3>
+      <p>$29.99</p>
+      <button class="add-to-cart-btn" onclick="addToCart('Product 2', 29.99)">Add to Cart</button>
+    </div>
+
+    <div class="product-card" id="product3">
+      <img src="product3.jpg" alt="Product 3">
+      <h3>Product 3</h3>
+      <p>$39.99</p>
+      <button class="add-to-cart-btn" onclick="addToCart('Product 3', 39.99)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="cart-modal">
+    <div id="cart-content">
+      <span class="close-btn" onclick="closeCartModal()">×</span>
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+    </div>
+  </div>
+
+  <script>
+    let cartItems = [];
+
+    function addToCart(productName, price) {
+      cartItems.push({ productName, price });
+      updateCartIcon();
+    }
+
+    function updateCartIcon() {
+      const cartIcon = document.getElementById('cart-icon');
+      cartIcon.innerHTML = `🛒 ${cartItems.length}`;
+    }
+
+    function openCartModal() {
+      const cartModal = document.getElementById('cart-modal');
+      cartModal.style.display = 'flex';
+      displayCartItems();
+    }
+
+    function closeCartModal() {
+      const cartModal = document.getElementById('cart-modal');
+      cartModal.style.display = 'none';
+    }
+
+    function displayCartItems() {
+        const cartItemsList = document.getElementById('cart-items');
+        cartItemsList.innerHTML = '';
+      
+        if (cartItems.length === 0) {
+          cartItemsList.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+          cartItems.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = item.productCardHTML + ` x${item.quantity}`;
+            cartItemsList.appendChild(li);
+          });
+        }
+      }
+      
+  </script>
+
+</body>
+</html>
