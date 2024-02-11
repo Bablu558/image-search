@@ -107,7 +107,7 @@ opacity: 0.8;
 .foot-pannel1{
     background-color: #008cba;
     width: 100%;
-    height: 275px;
+    /* height: 275px; */
     padding: 20px;
     
     display: flex;
@@ -121,19 +121,14 @@ opacity: 0.8;
     color: #fff;
     margin: 0; /* Remove default margin */
 }
-.footer p{
-   margin-left: 30px;
-}
+
 .foot-pannel1 h2 {
     padding-bottom: 10px; /* Adjust the padding as needed */
     color: #333;
 }
-@media screen and (max-width:768px) {
-    .foot-pannel1{
-        height: 225px;
-    }
+.footer p{
+    margin-left: 30px;
 }
-
 .copyright{
     color: #fff;
     margin-left:-70%;
@@ -141,6 +136,11 @@ opacity: 0.8;
    font-style: oblique;
    margin-bottom: 2%; 
     
+}
+@media screen and (max-width:768px){
+   .foot-pannel1{
+    min-height: auto;
+   }
 }
 /* pre-loader */
 .loader_bg{
