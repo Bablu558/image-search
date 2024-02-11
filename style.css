@@ -130,7 +130,7 @@ opacity: 0.8;
 }
 @media screen and (max-width:768px) {
     .foot-pannel1{
-        height: auto;
+        height: 225px;
     }
 }
 
