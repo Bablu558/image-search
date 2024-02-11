@@ -137,7 +137,7 @@ opacity: 0.8;
    margin-bottom: 2%; 
     
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:368px){
    .foot-pannel1{
     min-height: auto;
    }
